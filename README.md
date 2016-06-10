@@ -23,6 +23,11 @@ The client side main functionality is implemented by two files.
 Both these files are found in:
 app/src/main/java/nfc/android/mobilepayment/
 
+Dependencies:
+------------
+The project dependencies are described in 
+app/build.gradle
+
 Video Demo:
 -----------
 
