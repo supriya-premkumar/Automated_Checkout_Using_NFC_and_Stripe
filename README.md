@@ -9,6 +9,20 @@ The token is sent via POST securely to the backend server along with the validat
 
 The backend server can then use the transaction status returned by stripe to either disable the anti-theft devices and send an invoice to the customer.
 
+File Descriptions:
+-----------------
+
+The client side main functionality is implemented by two files.
+
+1. MobilePayment.java:
+   Reads data from NFC, performs user interaction to confirm buying of the item.
+
+2. ProcessPayment.java:
+   On confirmation of buying it provides a a dialog box to enter the credit card details using stripe checkout api and obtains the token. This token is securely transmitted to the backend server where the card gets charged.
+
+Both these files are found in:
+app/src/main/java/nfc/android/mobilepayment/
+
 Here is the demo of the video:
 
 [![Mobile Payments Video](http://img.youtube.com/vi/oqu5whyJoKI/0.jpg)](http://www.youtube.com/watch?v=oqu5whyJoKI)
