@@ -200,8 +200,6 @@ public class MobilePayment extends Activity{
             intent.putExtra(EXTRA_MESSAGE, message.toString());
             startActivity(intent);
 
-
-
         }
 
 

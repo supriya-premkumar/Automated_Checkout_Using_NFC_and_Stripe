@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
+
 public class ProcessPayment extends AppCompatActivity {
     public static float itemPrice = 0;
 
@@ -33,21 +34,21 @@ public class ProcessPayment extends AppCompatActivity {
         Log.v("SyncDisplay", message);
         TextView textView = (TextView) findViewById(R.id.sync_message);
         textView.setText(message);
-        Button confirmButton = (Button)  findViewById(R.id.confirm_payment);
-        Button backButton = (Button)  findViewById(R.id.decline_payment);
-        String [] parts = message.split("\\$");
+        Button confirmButton = (Button) findViewById(R.id.confirm_payment);
+        Button backButton = (Button) findViewById(R.id.decline_payment);
+        String[] parts = message.split("\\$");
         itemPrice = Float.valueOf(parts[1]);
 
 
     }
 
     public void onClick(View v) {
-        if(v.getId() == R.id.confirm_payment) {
+        if (v.getId() == R.id.confirm_payment) {
             Log.v("SyncDisplay:", String.valueOf(itemPrice));
             ChargeCard(itemPrice);
         }
 
-        if(v.getId()== R.id.decline_payment) {
+        if (v.getId() == R.id.decline_payment) {
             Intent intent;
             intent = new Intent(this, MobilePayment.class);
             startActivity(intent);
@@ -88,17 +89,12 @@ public class ProcessPayment extends AppCompatActivity {
                         }
                     }
             );
-        }
-        catch (final com.stripe.exception.AuthenticationException e) {
+        } catch (final com.stripe.exception.AuthenticationException e) {
             System.out.println("Invalid API Key, Check Stripe Dashboard");
 
         }
 
-
-
         return result;
-
-
     }
 
 
@@ -113,6 +109,7 @@ public class ProcessPayment extends AppCompatActivity {
                 return "Unable to retrieve web page. URL may be invalid.";
             }
         }
+
         // onPostExecute displays the results of the AsyncTask.
         @Override
         protected void onPostExecute(String result) {
@@ -154,17 +151,16 @@ public class ProcessPayment extends AppCompatActivity {
     }
 
 
-    void ProcessCharge(Token token, Float itemPrice){
+    void ProcessCharge(Token token, Float itemPrice) {
         long itemPriceInCents = itemPrice.longValue() * 100;
         String stringUrl = "https://supriyapremkumar.me/charge.php";
         MyTaskParams params = new MyTaskParams(token, stringUrl, itemPriceInCents);
 
 
         new DownloadWebpageTask().execute(params);
-        
+
 
     }
-
 
 
 }
