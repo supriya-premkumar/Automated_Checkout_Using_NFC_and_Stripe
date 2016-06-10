@@ -17,16 +17,19 @@ import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.Ndef;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+
 import android.util.Log;
 import android.os.AsyncTask;
 import android.widget.Button;
+
 import java.lang.String;
 
 // Activity for reading data from an NDEF Tag.
 
-public class MobilePayment extends Activity{
+public class MobilePayment extends Activity {
     public static final String TAG = "MobilePayment";
     public static final String MIME_TEXT_PLAIN = "text/plain";
     public final static String EXTRA_MESSAGE = "nfc.android.mobilepayment";
@@ -35,21 +38,21 @@ public class MobilePayment extends Activity{
     private NfcAdapter mNfcAdapter;
 
     @Override
-    protected void onCreate(Bundle SavedInstanceState){
+    protected void onCreate(Bundle SavedInstanceState) {
         super.onCreate(SavedInstanceState);
-               setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         mTextView = (TextView) findViewById(R.id.textView_explanation);
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
-        if (mNfcAdapter == null){
+        if (mNfcAdapter == null) {
             Toast.makeText(this, "This device doesn't support NFC.", Toast.LENGTH_LONG).show();
             finish();
             return;
         }
 
-        if (!mNfcAdapter.isEnabled()){
+        if (!mNfcAdapter.isEnabled()) {
             mTextView.setText("NFC is disabled");
         } else {
             mTextView.setText(R.string.explanation);
@@ -58,8 +61,8 @@ public class MobilePayment extends Activity{
         //intent = new Intent(this, SyncDisplay.class);
         handleIntent(getIntent());
     }
-    private void handleIntent(Intent intent){
 
+    private void handleIntent(Intent intent) {
 
 
         String action = intent.getAction();
@@ -176,24 +179,20 @@ public class MobilePayment extends Activity{
                 final Button payButton = (Button) findViewById(R.id.pay_now);
                 final Button backButton = (Button) findViewById(R.id.back);
 
-
-
-
-
             }
         }
     }
 
     public void onClick(View v) {
         // Back button onclick handler.
-        if(v.getId()== R.id.back) {
+        if (v.getId() == R.id.back) {
             Intent intent;
             intent = new Intent(this, MobilePayment.class);
             startActivity(intent);
 
         }
 
-        if(v.getId()== R.id.pay_now) {
+        if (v.getId() == R.id.pay_now) {
             Intent intent;
             intent = new Intent(this, ProcessPayment.class);
             CharSequence message = mTextView.getText();
@@ -208,7 +207,7 @@ public class MobilePayment extends Activity{
 
     /**
      * @param activity The corresponding {@link BaseActivity} requesting to stop the foreground dispatch.
-     * @param adapter The {@link NfcAdapter} used for the foreground dispatch.
+     * @param adapter  The {@link NfcAdapter} used for the foreground dispatch.
      */
     public static void stopForegroundDispatch(final Activity activity, NfcAdapter adapter) {
         adapter.disableForegroundDispatch(activity);

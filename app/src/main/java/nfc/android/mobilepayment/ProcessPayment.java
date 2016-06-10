@@ -158,9 +158,5 @@ public class ProcessPayment extends AppCompatActivity {
 
 
         new DownloadWebpageTask().execute(params);
-
-
     }
-
-
 }
