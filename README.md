@@ -28,6 +28,8 @@ Dependencies:
 The project dependencies are described in 
 app/build.gradle
 
+Specifically we need the stripe android library
+
 Video Demo:
 -----------
 
