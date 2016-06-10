@@ -23,6 +23,7 @@ The client side main functionality is implemented by two files.
 Both these files are found in:
 app/src/main/java/nfc/android/mobilepayment/
 
-Here is the demo of the video:
+Video Demo:
+-----------
 
 [![Mobile Payments Video](http://img.youtube.com/vi/oqu5whyJoKI/0.jpg)](http://www.youtube.com/watch?v=oqu5whyJoKI)
