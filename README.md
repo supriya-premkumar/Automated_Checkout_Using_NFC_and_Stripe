@@ -1,9 +1,14 @@
-When a customer wants to buy and check out his item/s(NFC tag will be mounted on item), without having to wait for a long time in a queue; here comes my Android Application.
+Imagine a world where you never have to wait in check out lines.
+This project is a Proof of Concept that to enable such a customer experience using NFC and Stripe
 
-Using my Android App which is integrated with stripe API(which acts as a payment gateway), customer just needs to tap on an item or come close to its proximity; A Page pops out to enter the user's credit card information. Once it is successful, item price will be displayed on the phone screen and it gives two options; one is to "confirm" the item and the other is to go "back" to the home page.
+A customer walks into the store and taps his android phone on the item he intends to buy. The item has its price data written on the mounted NFC tag.
 
-Once the user confirms the payment, price information will go to the stripe backend, which returns a token. Token along with the price information go to the server and updates the inventory. This will be sent to the Stripe backend where it validates the information and charges the credit card. Based on this information, it sends success or failure message to the customer. If it is successful, it sends an invoice to the user. This information can be used to activate or de-activate anti-theft devices.
+The app scans the price information, on user confirmation talks to Stripe to obtain a token for the entered credit card details.
 
-I have added a Demo-Video of my Project.
+The token is sent via POST securely to the backend server along with the validated price. The backend server uses the token and charges the card using Stripe API.
+
+The backend server can then use the transaction status returned by stripe to either disable the anti-theft devices and send an invoice to the customer.
+
+Here is the demo of the video:
 
 [![Mobile Payments Video](http://img.youtube.com/vi/oqu5whyJoKI/0.jpg)](http://www.youtube.com/watch?v=oqu5whyJoKI)
